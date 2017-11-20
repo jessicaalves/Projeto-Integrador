@@ -26,6 +26,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
     public void setCliente(Cliente cli) {
         this.cliente =cli;
         jTcliente.setText(cliente.getNome());
+        
     }
     
     
