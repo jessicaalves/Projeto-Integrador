@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.ListSelectionModel;
 import modelo.ModeloTabela;
+import modelo.Produto;
+import modelo.ReceptorProduto;
 
 /**
  *
@@ -18,13 +20,15 @@ import modelo.ModeloTabela;
  */
 public class ListarProdutos extends javax.swing.JFrame {
  ConecaoBanco conbanco = new ConecaoBanco();
+ private ReceptorProduto rp;
     /**
      * Creates new form ListaProduto
      */
-    public ListarProdutos() {
+    public ListarProdutos(ReceptorProduto receptorProduto) {
         initComponents();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         preencheTabelaCliente("");
+        rp = receptorProduto;
     }
 
     public ArrayList preencheTabelaCliente(String buscarNome) {
@@ -81,9 +85,11 @@ public class ListarProdutos extends javax.swing.JFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
-        jTBuscarClientes = new javax.swing.JTextField();
+        jTBuscarProdutos = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jTbSelecionarProduto = new javax.swing.JToggleButton();
+        jTquantidade = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lista de Produtos");
@@ -101,14 +107,14 @@ public class ListarProdutos extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tabela);
 
-        jTBuscarClientes.addActionListener(new java.awt.event.ActionListener() {
+        jTBuscarProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTBuscarClientesActionPerformed(evt);
+                jTBuscarProdutosActionPerformed(evt);
             }
         });
-        jTBuscarClientes.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTBuscarProdutos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTBuscarClientesKeyPressed(evt);
+                jTBuscarProdutosKeyPressed(evt);
             }
         });
 
@@ -121,20 +127,38 @@ public class ListarProdutos extends javax.swing.JFrame {
             }
         });
 
+        jTquantidade.setText("1");
+        jTquantidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTquantidadeActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Qnt.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTBuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(478, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTbSelecionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTBuscarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(478, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jTquantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jTbSelecionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(236, 236, 236))))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -147,9 +171,13 @@ public class ListarProdutos extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTBuscarClientes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
-                .addComponent(jTbSelecionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTBuscarProdutos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTbSelecionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTquantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -161,13 +189,13 @@ public class ListarProdutos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTBuscarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTBuscarClientesActionPerformed
+    private void jTBuscarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTBuscarProdutosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTBuscarClientesActionPerformed
+    }//GEN-LAST:event_jTBuscarProdutosActionPerformed
 
-    private void jTBuscarClientesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscarClientesKeyPressed
-        preencheTabelaCliente(jTBuscarClientes.getText());
-    }//GEN-LAST:event_jTBuscarClientesKeyPressed
+    private void jTBuscarProdutosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscarProdutosKeyPressed
+        preencheTabelaCliente(jTBuscarProdutos.getText());
+    }//GEN-LAST:event_jTBuscarProdutosKeyPressed
 
     private void jTbSelecionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTbSelecionarProdutoActionPerformed
 
@@ -175,52 +203,42 @@ public class ListarProdutos extends javax.swing.JFrame {
 
         //ServicoVisao.iDcliente = idCliente;
      //   receptor.setIdCliente(idCliente);
-
-        this.dispose();
+     
+     Produto p = new Produto();
+     
+     
+     int id = Integer.parseInt(""+tabela.getValueAt(tabela.getSelectedRow(), 0));
+     int qnt = Integer.parseInt(jTquantidade.getText());
+     double valor= Double.parseDouble(""+tabela.getValueAt(tabela.getSelectedRow(), 4));
+     
+     
+     p.setId(id);
+     p.setNome(""+tabela.getValueAt(tabela.getSelectedRow(), 1));//Concatenarc com Coluna 2(marca)?
+     p.setQuantidade(qnt);
+     p.setValor(valor);
+          
+     rp.setProduto(p);
+     
+      //this.dispose();
     }//GEN-LAST:event_jTbSelecionarProdutoActionPerformed
+
+    private void jTquantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTquantidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTquantidadeActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ListarProdutos().setVisible(true);
-            }
-        });
-    }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTBuscarClientes;
+    private javax.swing.JTextField jTBuscarProdutos;
     private javax.swing.JToggleButton jTbSelecionarProduto;
+    private javax.swing.JTextField jTquantidade;
     private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 }

@@ -36,7 +36,7 @@ public class ListarClientes extends javax.swing.JFrame {
         initComponents();
         preencheTabelaCliente("");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.receptor= receptor;
+        this.receptor = receptor;
     }
 
     public ArrayList preencheTabelaCliente(String buscarNome) {

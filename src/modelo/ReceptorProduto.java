@@ -9,7 +9,7 @@ package modelo;
  *
  * @author Jéssica
  */
-public interface ReceptorIdProduto {
-     void setIdProduto(int id);
+public interface ReceptorProduto {
+     void setProduto(Produto p);
     
 }

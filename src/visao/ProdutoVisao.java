@@ -43,15 +43,15 @@ public class ProdutoVisao extends javax.swing.JFrame {
         jTconfiguracao = new javax.swing.JTextField();
         jTnome = new javax.swing.JTextField();
         jBalterar = new javax.swing.JButton();
-        jBsalvar1 = new javax.swing.JButton();
+        jBsalvar = new javax.swing.JButton();
         jBbuscarProdutos = new javax.swing.JButton();
         jBexcluir = new javax.swing.JButton();
-        jBnovo1 = new javax.swing.JButton();
+        jBnovo = new javax.swing.JButton();
         jLvalor = new javax.swing.JLabel();
         jLquantidade = new javax.swing.JLabel();
         jTquantidade = new javax.swing.JTextField();
         jTvalor = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jBbuscarClientes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Produtos");
@@ -117,15 +117,15 @@ public class ProdutoVisao extends javax.swing.JFrame {
         jPanel1.add(jBalterar);
         jBalterar.setBounds(490, 270, 120, 50);
 
-        jBsalvar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/floppy-save-icon-23.png"))); // NOI18N
-        jBsalvar1.setText("Salvar");
-        jBsalvar1.addActionListener(new java.awt.event.ActionListener() {
+        jBsalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/floppy-save-icon-23.png"))); // NOI18N
+        jBsalvar.setText("Salvar");
+        jBsalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBsalvar1ActionPerformed(evt);
+                jBsalvarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBsalvar1);
-        jBsalvar1.setBounds(70, 270, 120, 50);
+        jPanel1.add(jBsalvar);
+        jBsalvar.setBounds(70, 270, 120, 50);
 
         jBbuscarProdutos.setText("Buscar Produtos");
         jBbuscarProdutos.addActionListener(new java.awt.event.ActionListener() {
@@ -146,14 +146,14 @@ public class ProdutoVisao extends javax.swing.JFrame {
         jPanel1.add(jBexcluir);
         jBexcluir.setBounds(350, 270, 120, 50);
 
-        jBnovo1.setText("Novo");
-        jBnovo1.addActionListener(new java.awt.event.ActionListener() {
+        jBnovo.setText("Novo");
+        jBnovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBnovo1ActionPerformed(evt);
+                jBnovoActionPerformed(evt);
             }
         });
-        jPanel1.add(jBnovo1);
-        jBnovo1.setBounds(210, 270, 120, 50);
+        jPanel1.add(jBnovo);
+        jBnovo.setBounds(210, 270, 120, 50);
 
         jLvalor.setText("Valor: ");
         jPanel1.add(jLvalor);
@@ -179,14 +179,14 @@ public class ProdutoVisao extends javax.swing.JFrame {
         jPanel1.add(jTvalor);
         jTvalor.setBounds(379, 170, 100, 25);
 
-        jButton1.setText("Buscar Clientes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBbuscarClientes.setText("Buscar Clientes");
+        jBbuscarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBbuscarClientesActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(520, 130, 120, 50);
+        jPanel1.add(jBbuscarClientes);
+        jBbuscarClientes.setBounds(520, 130, 120, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,7 +228,7 @@ public class ProdutoVisao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBalterarActionPerformed
 
-    private void jBsalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalvar1ActionPerformed
+    private void jBsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalvarActionPerformed
       //Se os campos especificados abaixo não forem preenchidos,
       //.equals compara logicamente | (== "") compara se é o mesmo objeto
         if (jTnome.getText().equals("")
@@ -249,17 +249,17 @@ public class ProdutoVisao extends javax.swing.JFrame {
             new ProdutoC().cadastrar(produto);
 
         }
-    }//GEN-LAST:event_jBsalvar1ActionPerformed
+    }//GEN-LAST:event_jBsalvarActionPerformed
 
     private void jBbuscarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarProdutosActionPerformed
-        new ListarProdutos().setVisible(true);
+       // Não esquecer new ListarProdutos().setVisible(true);
     }//GEN-LAST:event_jBbuscarProdutosActionPerformed
 
     private void jBexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBexcluirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBexcluirActionPerformed
 
-    private void jBnovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnovo1ActionPerformed
+    private void jBnovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnovoActionPerformed
         jTnome.setText("");
         jTmodelo.setText("");
         jTmarca.setText("");
@@ -267,7 +267,7 @@ public class ProdutoVisao extends javax.swing.JFrame {
         jTconfiguracao.setText("");
         jTvalor.setText("");
         
-    }//GEN-LAST:event_jBnovo1ActionPerformed
+    }//GEN-LAST:event_jBnovoActionPerformed
 
     private void jTquantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTquantidadeActionPerformed
         // TODO add your handling code here:
@@ -277,9 +277,9 @@ public class ProdutoVisao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTvalorActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBbuscarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarClientesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBbuscarClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,11 +318,11 @@ public class ProdutoVisao extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBalterar;
+    private javax.swing.JButton jBbuscarClientes;
     private javax.swing.JButton jBbuscarProdutos;
     private javax.swing.JButton jBexcluir;
-    private javax.swing.JButton jBnovo1;
-    private javax.swing.JButton jBsalvar1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBnovo;
+    private javax.swing.JButton jBsalvar;
     private javax.swing.JLabel jLconfiguracao;
     private javax.swing.JLabel jLmarca;
     private javax.swing.JLabel jLmodelo;
