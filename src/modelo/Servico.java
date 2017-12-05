@@ -17,19 +17,10 @@ public class Servico {
     private double valor;
     private String status;
     private Cliente cliente;
-    private String tipo;
-    private String voltagem;
-    private String acessorios;
     private String solucao;
+    private Dispositivo dispositivo;
     private ArrayList<Produto> produtosIncluidos;
     
-        public String getTipo() {
-        return tipo;
-    }
-
-    public String getVoltagem() {
-        return voltagem;
-    }
 
     public int getId() {
         return id;
@@ -72,22 +63,6 @@ public class Servico {
         this.cliente = cliente;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public void setVoltagem(String voltagem) {
-        this.voltagem = voltagem;
-    }
-
-    public String getAcessorios() {
-        return acessorios;
-    }
-
-    public void setAcessorios(String acessorios) {
-        this.acessorios = acessorios;
-    }
-
     public String getSolucao() {
         return solucao;
     }
@@ -96,22 +71,24 @@ public class Servico {
         this.solucao = solucao;
     }
     
+   public Dispositivo getDispositivo() {
+        return dispositivo;
+    }
+
+    public void setDispositivo(Dispositivo dispositivo) {
+        this.dispositivo = dispositivo;
+    }
     
-    public void cadastrar (){
-        
+
+    public ArrayList<Produto> getProdutosIncluidos() {
+        return produtosIncluidos;
     }
-    public void excluir (){
-        
+
+    public void setProdutosIncluidos(ArrayList<Produto> produtosIncluidos) {
+        this.produtosIncluidos = produtosIncluidos;
     }
-    public void alterar (){
-        
-    }
-    public void salvar(){
-        
-    }
-    public void pesquisar(){
-        
-    }
+
+    
 
 
 }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo;
 
 /**
@@ -10,35 +6,48 @@ package modelo;
  * @author Simone Barbosa
  */
 public class Dispositivo {
-     private int voltagem;
-    private String nome;
-    private String configuracao;
+    private String voltagem;
     private String acessorio;
+    private String marca;
+    private String numeroSerie;
+    private String tipo;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+    
     
 
-    public int getVoltagem() {
+    public String getVoltagem() {
         return voltagem;
     }
 
-    public void setVoltagem(int voltagem) {
+    public void setVoltagem(String voltagem) {
         this.voltagem = voltagem;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getConfiguracao() {
-        return configuracao;
-    }
-
-    public void setConfiguracao(String configuracao) {
-        this.configuracao = configuracao;
-    }
+   
 
     public String getAcessorio() {
         return acessorio;
@@ -47,22 +56,18 @@ public class Dispositivo {
     public void setAcessorio(String acessorio) {
         this.acessorio = acessorio;
     }
+    
+    public String getNumeroSerie() {
+        return numeroSerie;
+    }
 
-     public void cadastrar (){
-        
+    public void setNumeroSerie(String numeroSerie) {
+        this.numeroSerie = numeroSerie;
     }
-    public void excluir (){
-        
-    }
-    public void alterar (){
-        
-    }
-    public void salvar(){
-        
-    }
-    public void pesquisar(){
-        
-    }
+
+    
+
+    
 
 }
 

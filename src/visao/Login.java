@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package visao;
 
 import dao.ConecaoBanco;
@@ -13,10 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Jefferson
- */
+
 public class Login extends javax.swing.JFrame {
 
     ConecaoBanco con = new ConecaoBanco();
@@ -26,11 +18,7 @@ public class Login extends javax.swing.JFrame {
         con.conexao();
         
         
-//        Image img = Toolkit.getDefaultToolkit().getImage("/recursos/login-icon-39414.png")
-//        
-//        new ImageIcon("recursos/login-icon-39414.png");
-//        getClass().getResource("/recursos/login-icon-39414.png");
-//         setIconImage( );
+ 
     }
 
     /**
@@ -61,6 +49,11 @@ public class Login extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bt_cancelar.setText("Cancelar");
+        bt_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cancelarActionPerformed(evt);
+            }
+        });
         jPanel2.add(bt_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 100, 30));
 
         jLsenha.setText("Senha:");
@@ -97,20 +90,13 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 500, 200));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_okActionPerformed
-        // boolean login =true;
-
-        // if(login){
-        //   this.dispose();
-        // new Principal().setVisible(true);
-        // }else{
-        //JOptionPane.showMessageDialog(this, "Usuário ou senha incorreto(s)!");
-        //}
+        
         try {
 
-            // ConecaoBanco con = new ConecaoBanco();
             String sql = "select * from operadorsistema where Usuario =? and senha =?";
 
             PreparedStatement ps = con.conn.prepareStatement(sql);
@@ -119,7 +105,7 @@ public class Login extends javax.swing.JFrame {
             ps.setString(2, text_login2.getText());
 
             con.rs = ps.executeQuery();
-            //ps.close();
+            
 
             if (con.rs.first()) {
                 this.dispose();
@@ -129,16 +115,6 @@ public class Login extends javax.swing.JFrame {
 
             }
 
-//        
-//       con.executaSql("select *from operadorsistema where Usuario ='"+text_login1.getText()+"'");
-//        con.rs.first();
-//        if(con.rs.getString("senha").equals(text_login2.getText())){
-//            Principal prin = new Principal();
-//            prin.setVisible(true);
-//            disposo();
-//        }else{
-//            JOptionPane.showInternalConfirmDialog(rootPane, "Senha ou usuario invalidos !");
-//        }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Senha ou usuario invalidos !");
         }
@@ -153,6 +129,10 @@ public class Login extends javax.swing.JFrame {
     private void text_login2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_login2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_text_login2ActionPerformed
+
+    private void bt_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelarActionPerformed
+       dispose();
+    }//GEN-LAST:event_bt_cancelarActionPerformed
 
     /**
      * @param args the command line arguments

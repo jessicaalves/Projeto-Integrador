@@ -15,16 +15,45 @@ import modelo.ModeloTabela;
 import modelo.Produto;
 import modelo.ReceptorCliente;
 import modelo.ReceptorProduto;
+import modelo.ReceptorServico;
+import modelo.Servico;
 
 /**
  *
  * @author Jéssica A Ferreira
  */
-public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente, ReceptorProduto {
+public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente, ReceptorProduto, ReceptorServico {
 
     public static Cliente cliente;
-
     private ArrayList<Produto> produtosIncuidos;
+
+    @Override
+    public void setServico(Servico ser) {
+        jTid.setText("" + ser.getId());
+        jTcliente.setText(ser.getCliente().getNome());        
+        jTsolucao.setText(ser.getSolucao());
+        jTvalor.setText("" + ser.getValor());
+        jTdescricao.setText(ser.getDescricao());
+        jTAcessorios.setText(ser.getDispositivo().getAcessorio());
+        jTmarca.setText(ser.getDispositivo().getMarca());
+        jTnumeroSerie1.setText(ser.getDispositivo().getNumeroSerie());
+        //jComboBoxStatus.
+        //jComboBoxTipo
+        if(ser.getDispositivo().getVoltagem().equals("220V")){            
+            jRadio220.setSelected(true);
+        }else if(ser.getDispositivo().getVoltagem().equals("110V")){
+            jRadio110.setSelected(true);
+        }else{
+            jRadioBivolt.setSelected(true);
+        }
+        
+        
+        
+       produtosIncuidos= ser.getProdutosIncluidos();
+        
+        carregaTabelaProdutosIncusos();
+        
+    }
 
     @Override
     public void setCliente(Cliente cli) {
@@ -35,10 +64,10 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
 
     @Override
     public void setProduto(Produto p) {
-        if(produtosIncuidos==null){
-            produtosIncuidos= new ArrayList<>();
+        if (produtosIncuidos == null) {
+            produtosIncuidos = new ArrayList<>();
         }
-        
+
         produtosIncuidos.add(p);
         carregaTabelaProdutosIncusos();
     }
@@ -47,7 +76,16 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
 
         String[] colunas = new String[]{"ID", "Nome", "Marca", "Quantidade", "Valor"};
 
-        ModeloTabela modelo = new ModeloTabela(produtosIncuidos, colunas);
+        ArrayList dados = new ArrayList();
+
+        for (Produto p : produtosIncuidos) {
+
+            dados.add(new Object[]{p.getId(), p.getNome(), p.getMarca(), p.getQuantidade(), p.getValor()});
+
+        }
+
+        //ModeloTabela modelo = new ModeloTabela(produtosIncuidos, colunas);
+        ModeloTabela modelo = new ModeloTabela(dados, colunas);
         tabela.setModel(modelo);
         tabela.getColumnModel().getColumn(0).setPreferredWidth(50);
         tabela.getColumnModel().getColumn(0).setResizable(false);
@@ -63,6 +101,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
         tabela.setAutoResizeMode(tabela.AUTO_RESIZE_OFF);
         tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
+        dados = null;
     }
 
     /**
@@ -93,7 +132,6 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
         jTsolucao = new javax.swing.JTextField();
         jTvalor = new javax.swing.JTextField();
         jLdescricao = new javax.swing.JLabel();
-        jBbuscarServicos = new javax.swing.JButton();
         jBnovo = new javax.swing.JButton();
         jBexcluir = new javax.swing.JButton();
         jBsalvar = new javax.swing.JButton();
@@ -110,12 +148,17 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
         jRadioBivolt = new javax.swing.JRadioButton();
         jLcliente = new javax.swing.JLabel();
         jTdescricao = new javax.swing.JTextField();
-        jBbuscarClientes = new javax.swing.JButton();
         jLstatus = new javax.swing.JLabel();
         jComboBoxStatus = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
+        jLnumeroSerie = new javax.swing.JLabel();
+        jTmarca = new javax.swing.JTextField();
+        jTnumeroSerie1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jBbuscarClientes = new javax.swing.JButton();
+        jBbuscarServicos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Serviços");
@@ -126,19 +169,20 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
 
         jLid.setText("ID:");
         jPanel1.add(jLid);
-        jLid.setBounds(90, 120, 30, 20);
+        jLid.setBounds(90, 100, 50, 30);
 
+        jTid.setEditable(false);
         jTid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTidActionPerformed(evt);
             }
         });
         jPanel1.add(jTid);
-        jTid.setBounds(130, 120, 120, 25);
+        jTid.setBounds(130, 100, 140, 30);
 
         jLvalor.setText("Valor:");
         jPanel1.add(jLvalor);
-        jLvalor.setBounds(270, 120, 70, 25);
+        jLvalor.setBounds(290, 100, 40, 25);
 
         jTsolucao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +190,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             }
         });
         jPanel1.add(jTsolucao);
-        jTsolucao.setBounds(130, 230, 310, 25);
+        jTsolucao.setBounds(130, 220, 330, 30);
 
         jTvalor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,20 +198,11 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             }
         });
         jPanel1.add(jTvalor);
-        jTvalor.setBounds(310, 120, 130, 25);
+        jTvalor.setBounds(320, 100, 140, 30);
 
         jLdescricao.setText("Descrição:");
         jPanel1.add(jLdescricao);
-        jLdescricao.setBounds(60, 80, 70, 20);
-
-        jBbuscarServicos.setText("Buscar Serviços");
-        jBbuscarServicos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBbuscarServicosActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jBbuscarServicos);
-        jBbuscarServicos.setBounds(560, 150, 130, 40);
+        jLdescricao.setBounds(60, 60, 70, 30);
 
         jBnovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/icone_servicos.png"))); // NOI18N
         jBnovo.setText("Novo");
@@ -177,7 +212,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             }
         });
         jPanel1.add(jBnovo);
-        jBnovo.setBounds(570, 280, 120, 50);
+        jBnovo.setBounds(520, 80, 160, 50);
 
         jBexcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Delete-icon-2.png"))); // NOI18N
         jBexcluir.setText("Excluir");
@@ -187,7 +222,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             }
         });
         jPanel1.add(jBexcluir);
-        jBexcluir.setBounds(570, 210, 120, 50);
+        jBexcluir.setBounds(520, 140, 160, 50);
 
         jBsalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/floppy-save-icon-23.png"))); // NOI18N
         jBsalvar.setText("Salvar");
@@ -197,11 +232,11 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             }
         });
         jPanel1.add(jBsalvar);
-        jBsalvar.setBounds(570, 350, 120, 50);
+        jBsalvar.setBounds(520, 20, 160, 50);
 
         jLsolucao.setText("Solução:");
         jPanel1.add(jLsolucao);
-        jLsolucao.setBounds(80, 230, 60, 14);
+        jLsolucao.setBounds(70, 220, 60, 30);
 
         jTcliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,8 +244,9 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             }
         });
         jPanel1.add(jTcliente);
-        jTcliente.setBounds(130, 50, 310, 25);
+        jTcliente.setBounds(130, 25, 330, 30);
 
+        jBadicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/mais2.png"))); // NOI18N
         jBadicionarProduto.setText("Adicionar Produto");
         jBadicionarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,7 +254,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             }
         });
         jPanel1.add(jBadicionarProduto);
-        jBadicionarProduto.setBounds(560, 100, 130, 40);
+        jBadicionarProduto.setBounds(520, 200, 160, 50);
 
         jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Desktop", "Notebook", "Celular", "Tablet", "Gadgets" }));
         jComboBoxTipo.addActionListener(new java.awt.event.ActionListener() {
@@ -227,7 +263,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             }
         });
         jPanel1.add(jComboBoxTipo);
-        jComboBoxTipo.setBounds(130, 160, 71, 20);
+        jComboBoxTipo.setBounds(130, 140, 100, 30);
 
         jTAcessorios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,19 +271,19 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             }
         });
         jPanel1.add(jTAcessorios);
-        jTAcessorios.setBounds(130, 190, 310, 25);
+        jTAcessorios.setBounds(130, 180, 330, 30);
 
         jLacessorios.setText("Acessórios:");
         jPanel1.add(jLacessorios);
-        jLacessorios.setBounds(70, 190, 55, 14);
+        jLacessorios.setBounds(50, 180, 55, 30);
 
         jLtipo.setText("Tipo:");
         jPanel1.add(jLtipo);
-        jLtipo.setBounds(90, 160, 24, 14);
+        jLtipo.setBounds(80, 140, 50, 30);
 
         jLvoltagem2.setText("Voltagem:");
         jPanel1.add(jLvoltagem2);
-        jLvoltagem2.setBounds(220, 160, 48, 20);
+        jLvoltagem2.setBounds(250, 140, 48, 30);
 
         bGVoltagem.add(jRadio110);
         jRadio110.setText("110V");
@@ -257,21 +293,21 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             }
         });
         jPanel1.add(jRadio110);
-        jRadio110.setBounds(270, 160, 49, 23);
+        jRadio110.setBounds(300, 140, 49, 30);
 
         bGVoltagem.add(jRadio220);
         jRadio220.setText("220V");
         jPanel1.add(jRadio220);
-        jRadio220.setBounds(330, 160, 49, 23);
+        jRadio220.setBounds(350, 140, 49, 30);
 
         bGVoltagem.add(jRadioBivolt);
         jRadioBivolt.setText("Bivolt");
         jPanel1.add(jRadioBivolt);
-        jRadioBivolt.setBounds(390, 160, 51, 23);
+        jRadioBivolt.setBounds(410, 140, 51, 30);
 
         jLcliente.setText("Cliente:");
         jPanel1.add(jLcliente);
-        jLcliente.setBounds(60, 50, 50, 14);
+        jLcliente.setBounds(60, 20, 70, 30);
 
         jTdescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,20 +315,11 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             }
         });
         jPanel1.add(jTdescricao);
-        jTdescricao.setBounds(130, 80, 310, 25);
-
-        jBbuscarClientes.setText("Buscar Cliente");
-        jBbuscarClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBbuscarClientesActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jBbuscarClientes);
-        jBbuscarClientes.setBounds(560, 50, 130, 40);
+        jTdescricao.setBounds(130, 60, 330, 30);
 
         jLstatus.setText("Status:");
         jPanel1.add(jLstatus);
-        jLstatus.setBounds(80, 270, 40, 14);
+        jLstatus.setBounds(80, 260, 60, 30);
 
         jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Em manutenção", "Aguardando cliente", "Entrar em contato com o cliente", "Finalizado" }));
         jComboBoxStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -301,11 +328,11 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             }
         });
         jPanel1.add(jComboBoxStatus);
-        jComboBoxStatus.setBounds(130, 270, 130, 20);
+        jComboBoxStatus.setBounds(130, 260, 110, 30);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de produtos incluídos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 12))); // NOI18N
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tabela.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de produtos incluídos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12)))); // NOI18N
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -319,38 +346,56 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
         ));
         jScrollPane2.setViewportView(tabela);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-        );
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 640, 160));
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(30, 330, 520, 190);
+        jPanel2.setBounds(30, 380, 660, 200);
+
+        jLnumeroSerie.setText("Nº de Série: ");
+        jPanel1.add(jLnumeroSerie);
+        jLnumeroSerie.setBounds(70, 300, 61, 30);
+        jPanel1.add(jTmarca);
+        jTmarca.setBounds(320, 260, 140, 30);
+        jPanel1.add(jTnumeroSerie1);
+        jTnumeroSerie1.setBounds(130, 300, 330, 30);
+
+        jLabel1.setText("Marca:");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(280, 260, 40, 30);
+
+        jBbuscarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/pesquisa2.png"))); // NOI18N
+        jBbuscarClientes.setText("Buscar Cliente");
+        jBbuscarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBbuscarClientesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBbuscarClientes);
+        jBbuscarClientes.setBounds(520, 260, 160, 50);
+
+        jBbuscarServicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupaPreta2.png"))); // NOI18N
+        jBbuscarServicos.setText("Buscar Serviços");
+        jBbuscarServicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBbuscarServicosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBbuscarServicos);
+        jBbuscarServicos.setBounds(520, 320, 160, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(3, 3, 3)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE))
         );
 
         pack();
@@ -369,7 +414,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
     }//GEN-LAST:event_jTvalorActionPerformed
 
     private void jBbuscarServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarServicosActionPerformed
-        //new ListarClientes().setVisible(true);
+        new ListarServicos(this).setVisible(true);
     }//GEN-LAST:event_jBbuscarServicosActionPerformed
 
     private void jBnovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnovoActionPerformed
@@ -387,18 +432,21 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             if (bGVoltagem.getSelection() != null) {
                 ArrayList<String> servico = new ArrayList<>();
 
-                servico.add("" + cliente.getId());
-                servico.add(jTdescricao.getText());
-                servico.add(jTvalor.getText());
-                servico.add(jComboBoxTipo.getItemAt(jComboBoxTipo.getSelectedIndex()));
-                servico.add(bGVoltagem.getSelection().getActionCommand());
-                servico.add(jTAcessorios.getText());
-                servico.add(jTsolucao.getText());
-                servico.add(jComboBoxStatus.getItemAt(jComboBoxStatus.getSelectedIndex()));
+                servico.add("" + cliente.getId());//0
+                servico.add(jTdescricao.getText());//1
+                servico.add(jTvalor.getText());//2
+                servico.add(jComboBoxTipo.getItemAt(jComboBoxTipo.getSelectedIndex()));//3
+                servico.add(bGVoltagem.getSelection().getActionCommand());//4
+                servico.add(jTAcessorios.getText());//5
+                servico.add(jTsolucao.getText());//6
+                servico.add(jComboBoxStatus.getItemAt(jComboBoxStatus.getSelectedIndex()));//7
+                servico.add(jTnumeroSerie1.getText());//8
+                servico.add(jTmarca.getText());//9
 
                 // ServicoC sc = new ServicoC();
                 //  sc.cadastrar(servico);
-                new ServicoC().cadastrar(servico); // O metodo cadastrar
+                new ServicoC().cadastrar(servico, produtosIncuidos); // O metodo cadastrar
+                cliente.setId(0);  // zera o id cliente após salvar o serviço
             } else {
 
                 JOptionPane.showMessageDialog(this, "É necessário selecionar a voltagem!");
@@ -408,7 +456,6 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             JOptionPane.showMessageDialog(this, "Cliente não selecionado!");
         }
 
-        cliente.setId(0);  // zera o id cliente após salvar o serviço
 
     }//GEN-LAST:event_jBsalvarActionPerformed
 
@@ -495,10 +542,12 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
     private javax.swing.JButton jBsalvar;
     private javax.swing.JComboBox<String> jComboBoxStatus;
     private javax.swing.JComboBox<String> jComboBoxTipo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLacessorios;
     private javax.swing.JLabel jLcliente;
     private javax.swing.JLabel jLdescricao;
     private javax.swing.JLabel jLid;
+    private javax.swing.JLabel jLnumeroSerie;
     private javax.swing.JLabel jLsolucao;
     private javax.swing.JLabel jLstatus;
     private javax.swing.JLabel jLtipo;
@@ -514,6 +563,8 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
     private javax.swing.JTextField jTcliente;
     private javax.swing.JTextField jTdescricao;
     private javax.swing.JTextField jTid;
+    private javax.swing.JTextField jTmarca;
+    private javax.swing.JTextField jTnumeroSerie1;
     private javax.swing.JTextField jTsolucao;
     private javax.swing.JTextField jTvalor;
     private javax.swing.JTable tabela;

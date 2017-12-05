@@ -34,8 +34,8 @@ public class ListarClientes extends javax.swing.JFrame {
     public ListarClientes(ReceptorCliente receptor) {
         idCliente = 0;
         initComponents();
-        preencheTabelaCliente("");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        preencheTabelaCliente("");
         this.receptor = receptor;
     }
 

@@ -112,21 +112,6 @@ public class Cliente {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    public void cadastrar (){
-        
-    }
-    public void excluir (){
-        
-    }
-    public void alterar(){
-    
-    }
-    public void salvar (){
-        
-    }
-    public void pesquisar(){
-        
-    }
 
 
 

@@ -56,24 +56,24 @@ public class ProdutoVisao extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Produtos");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Produto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Produto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 12))); // NOI18N
         jPanel1.setLayout(null);
 
         jLnome.setText("*Nome: ");
         jPanel1.add(jLnome);
-        jLnome.setBounds(70, 50, 40, 14);
+        jLnome.setBounds(100, 70, 40, 30);
 
         jLmodelo.setText("Modelo: ");
         jPanel1.add(jLmodelo);
-        jLmodelo.setBounds(70, 90, 41, 14);
+        jLmodelo.setBounds(100, 110, 41, 30);
 
         jLmarca.setText("Marca: ");
         jPanel1.add(jLmarca);
-        jLmarca.setBounds(80, 130, 78, 14);
+        jLmarca.setBounds(100, 150, 78, 30);
 
         jLconfiguracao.setText("Configuração:");
         jPanel1.add(jLconfiguracao);
-        jLconfiguracao.setBounds(40, 170, 68, 14);
+        jLconfiguracao.setBounds(70, 190, 68, 30);
 
         jTmodelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +81,7 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTmodelo);
-        jTmodelo.setBounds(130, 90, 350, 25);
+        jTmodelo.setBounds(150, 70, 350, 30);
 
         jTmarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +89,7 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTmarca);
-        jTmarca.setBounds(130, 130, 170, 25);
+        jTmarca.setBounds(150, 150, 170, 30);
 
         jTconfiguracao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,7 +97,7 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTconfiguracao);
-        jTconfiguracao.setBounds(130, 170, 170, 25);
+        jTconfiguracao.setBounds(150, 190, 170, 30);
 
         jTnome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,7 +105,7 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTnome);
-        jTnome.setBounds(130, 50, 350, 25);
+        jTnome.setBounds(150, 110, 350, 30);
 
         jBalterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/edit-validated_40458.png"))); // NOI18N
         jBalterar.setText("Alterar");
@@ -115,7 +115,7 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jBalterar);
-        jBalterar.setBounds(490, 270, 120, 50);
+        jBalterar.setBounds(370, 310, 160, 50);
 
         jBsalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/floppy-save-icon-23.png"))); // NOI18N
         jBsalvar.setText("Salvar");
@@ -125,8 +125,9 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jBsalvar);
-        jBsalvar.setBounds(70, 270, 120, 50);
+        jBsalvar.setBounds(30, 310, 160, 50);
 
+        jBbuscarProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupaPreta2.png"))); // NOI18N
         jBbuscarProdutos.setText("Buscar Produtos");
         jBbuscarProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +135,7 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jBbuscarProdutos);
-        jBbuscarProdutos.setBounds(520, 50, 120, 50);
+        jBbuscarProdutos.setBounds(540, 70, 161, 50);
 
         jBexcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Delete-icon-2.png"))); // NOI18N
         jBexcluir.setText("Excluir");
@@ -144,8 +145,9 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jBexcluir);
-        jBexcluir.setBounds(350, 270, 120, 50);
+        jBexcluir.setBounds(540, 310, 160, 50);
 
+        jBnovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/mais.png"))); // NOI18N
         jBnovo.setText("Novo");
         jBnovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,15 +155,15 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jBnovo);
-        jBnovo.setBounds(210, 270, 120, 50);
+        jBnovo.setBounds(200, 310, 160, 50);
 
         jLvalor.setText("Valor: ");
         jPanel1.add(jLvalor);
-        jLvalor.setBounds(320, 170, 34, 14);
+        jLvalor.setBounds(360, 190, 40, 30);
 
         jLquantidade.setText("Quantidade:");
         jPanel1.add(jLquantidade);
-        jLquantidade.setBounds(310, 130, 70, 14);
+        jLquantidade.setBounds(330, 150, 70, 30);
 
         jTquantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +171,7 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTquantidade);
-        jTquantidade.setBounds(380, 130, 100, 25);
+        jTquantidade.setBounds(400, 150, 100, 30);
 
         jTvalor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,8 +179,9 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTvalor);
-        jTvalor.setBounds(379, 170, 100, 25);
+        jTvalor.setBounds(400, 190, 100, 30);
 
+        jBbuscarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/pesquisa2.png"))); // NOI18N
         jBbuscarClientes.setText("Buscar Clientes");
         jBbuscarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,23 +189,23 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jBbuscarClientes);
-        jBbuscarClientes.setBounds(520, 130, 120, 50);
+        jBbuscarClientes.setBounds(540, 160, 160, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(54, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();

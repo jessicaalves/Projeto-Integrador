@@ -18,10 +18,7 @@ public class Produto {
     private String configuracao;
     private double valor;
     
-   
-    
-    
-   
+  
     public int getId() {
         return id;
     }
@@ -78,22 +75,6 @@ public class Produto {
         this.valor = valor;
     }
 
-
-    public void cadastrar (){
-        
-    }
-    public void excluir (){
-        
-    }
-    public void alterar (){
-        
-    }
-    public void salvar(){
-        
-    }
-    public void pesquisar(){
-        
-    }
 
     
 }

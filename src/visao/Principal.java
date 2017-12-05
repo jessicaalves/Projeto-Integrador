@@ -12,12 +12,13 @@ public class Principal extends javax.swing.JFrame {
         jBclientes = new javax.swing.JButton();
         jBservicos = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestor de Serviço Easy Solution");
         getContentPane().setLayout(null);
 
-        jBprodutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bulk.png"))); // NOI18N
+        jBprodutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/fms-producto.jpg"))); // NOI18N
         jBprodutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBprodutosActionPerformed(evt);
@@ -49,6 +50,10 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 710, 580);
 
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(110, 290, 120, 14);
+
         setSize(new java.awt.Dimension(685, 472));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -70,6 +75,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jBclientes;
     private javax.swing.JButton jBprodutos;
     private javax.swing.JButton jBservicos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
