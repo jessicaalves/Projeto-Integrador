@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 
-
 public class Login extends javax.swing.JFrame {
 
     ConecaoBanco con = new ConecaoBanco();
@@ -16,9 +15,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         con.conexao();
-        
-        
- 
+
     }
 
     /**
@@ -94,7 +91,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_okActionPerformed
-        
+
         try {
 
             String sql = "select * from operadorsistema where Usuario =? and senha =?";
@@ -105,8 +102,9 @@ public class Login extends javax.swing.JFrame {
             ps.setString(2, text_login2.getText());
 
             con.rs = ps.executeQuery();
-            
 
+//Se a busca com usuário e senha digitados retornou ao menos uma linha, 
+//quer dizer que estão certos login e senha, logo carrega a tela principal
             if (con.rs.first()) {
                 this.dispose();
                 new Principal().setVisible(true);
@@ -131,7 +129,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_text_login2ActionPerformed
 
     private void bt_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelarActionPerformed
-       dispose();
+        dispose();
     }//GEN-LAST:event_bt_cancelarActionPerformed
 
     /**

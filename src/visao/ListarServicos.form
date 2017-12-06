@@ -3,10 +3,11 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -33,7 +34,9 @@
               <Component id="jTBuscarProdutos" min="-2" pref="184" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="44" max="-2" attributes="0"/>
-              <EmptySpace pref="435" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <Component id="jCheckBoxFinalizados" min="-2" pref="182" max="-2" attributes="0"/>
+              <EmptySpace pref="219" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
@@ -48,9 +51,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="32" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabel1" pref="0" max="32767" attributes="0"/>
-                  <Component id="jTBuscarProdutos" pref="28" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabel1" pref="0" max="32767" attributes="0"/>
+                      <Component id="jTBuscarProdutos" pref="28" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jCheckBoxFinalizados" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
               <Component id="jTbSelecionarServico" min="-2" pref="40" max="-2" attributes="0"/>
@@ -96,6 +102,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTBuscarProdutos">
       <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTBuscarProdutosActionPerformed"/>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTBuscarProdutosKeyPressed"/>
       </Events>
     </Component>
@@ -105,6 +112,14 @@
           <Image iconType="3" name="/recursos/lupa.png"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="jCheckBoxFinalizados">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mostrar finalizados"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxFinalizadosActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

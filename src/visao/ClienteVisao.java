@@ -78,6 +78,7 @@ public class ClienteVisao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Clientes");
+        setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Dados do Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 12))); // NOI18N
@@ -99,9 +100,9 @@ public class ClienteVisao extends javax.swing.JFrame {
         jPanel2.add(jT7);
         jT7.setBounds(160, 210, 350, 30);
 
-        jLtelefone2.setText("Telefone 2:");
+        jLtelefone2.setText("*Telefone 2:");
         jPanel2.add(jLtelefone2);
-        jLtelefone2.setBounds(350, 170, 70, 30);
+        jLtelefone2.setBounds(340, 170, 70, 30);
 
         jLresponsavel.setText("*Responsável:");
         jPanel2.add(jLresponsavel);
@@ -129,7 +130,7 @@ public class ClienteVisao extends javax.swing.JFrame {
 
         jLcpf.setText("CPF:");
         jPanel2.add(jLcpf);
-        jLcpf.setBounds(320, 130, 23, 30);
+        jLcpf.setBounds(320, 130, 50, 30);
         jPanel2.add(jLabel7);
         jLabel7.setBounds(220, 200, 0, 0);
 
@@ -174,7 +175,7 @@ public class ClienteVisao extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jBsalvar);
-        jBsalvar.setBounds(560, 40, 160, 50);
+        jBsalvar.setBounds(560, 40, 170, 50);
 
         jBnovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/icone_usuario_novo.png"))); // NOI18N
         jBnovo.setText("Novo");
@@ -184,7 +185,7 @@ public class ClienteVisao extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jBnovo);
-        jBnovo.setBounds(560, 100, 160, 50);
+        jBnovo.setBounds(560, 100, 170, 50);
 
         jBalterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/alterar.png"))); // NOI18N
         jBalterar.setText("Alterar");
@@ -194,7 +195,7 @@ public class ClienteVisao extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jBalterar);
-        jBalterar.setBounds(560, 220, 160, 50);
+        jBalterar.setBounds(560, 220, 170, 50);
 
         jBexcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ca.png"))); // NOI18N
         jBexcluir.setText("Excluir");
@@ -204,7 +205,7 @@ public class ClienteVisao extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jBexcluir);
-        jBexcluir.setBounds(560, 160, 160, 50);
+        jBexcluir.setBounds(560, 160, 170, 50);
 
         jTID.setEditable(false);
         jTID.addActionListener(new java.awt.event.ActionListener() {
@@ -215,15 +216,15 @@ public class ClienteVisao extends javax.swing.JFrame {
         jPanel2.add(jTID);
         jTID.setBounds(160, 130, 90, 30);
 
-        jBbuscarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/pesquisa2.png"))); // NOI18N
-        jBbuscarClientes.setText("Buscar Clientes");
+        jBbuscarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/pesquisa4.png"))); // NOI18N
+        jBbuscarClientes.setText("Selecionar Cliente");
         jBbuscarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBbuscarClientesActionPerformed(evt);
             }
         });
         jPanel2.add(jBbuscarClientes);
-        jBbuscarClientes.setBounds(560, 280, 160, 50);
+        jBbuscarClientes.setBounds(560, 280, 170, 50);
 
         try {
             jT5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#########")));
@@ -327,7 +328,7 @@ public class ClienteVisao extends javax.swing.JFrame {
         );
 
         jPanel2.add(jPanel1);
-        jPanel1.setBounds(50, 350, 680, 230);
+        jPanel1.setBounds(50, 350, 680, 240);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

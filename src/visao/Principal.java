@@ -16,9 +16,10 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestor de Serviço Easy Solution");
+        setResizable(false);
         getContentPane().setLayout(null);
 
-        jBprodutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/fms-producto.jpg"))); // NOI18N
+        jBprodutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/fms-producto_1.jpg"))); // NOI18N
         jBprodutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBprodutosActionPerformed(evt);
@@ -27,7 +28,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(jBprodutos);
         jBprodutos.setBounds(430, 150, 130, 131);
 
-        jBclientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/folder.customer.icon.jpg"))); // NOI18N
+        jBclientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/folder.customer.icon_2.jpg"))); // NOI18N
         jBclientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBclientesActionPerformed(evt);
@@ -36,7 +37,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(jBclientes);
         jBclientes.setBounds(100, 150, 130, 130);
 
-        jBservicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/maintenance.ordinateur.reseaux.tanger.maroc.jpg"))); // NOI18N
+        jBservicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/maintenance.ordinateur.reseaux.tanger.maroc_1.jpg"))); // NOI18N
         jBservicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBservicosActionPerformed(evt);

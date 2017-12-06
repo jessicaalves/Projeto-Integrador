@@ -99,6 +99,7 @@ public class ListarClientes extends javax.swing.JFrame {
         jTbSelecionarCliente = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -144,6 +145,7 @@ public class ListarClientes extends javax.swing.JFrame {
         getContentPane().add(jTbSelecionarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 180, 40));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTBuscarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTBuscarClientesActionPerformed

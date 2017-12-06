@@ -27,6 +27,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Cadastro de Clientes"/>
+    <Property name="resizable" type="boolean" value="false"/>
     <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1000, 1000]"/>
     </Property>
@@ -118,11 +119,11 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLtelefone2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Telefone 2:"/>
+            <Property name="text" type="java.lang.String" value="*Telefone 2:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="350" y="170" width="70" height="30"/>
+              <AbsoluteConstraints x="340" y="170" width="70" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -172,7 +173,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="320" y="130" width="-1" height="30"/>
+              <AbsoluteConstraints x="320" y="130" width="50" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -291,7 +292,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="560" y="40" width="160" height="50"/>
+              <AbsoluteConstraints x="560" y="40" width="170" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -307,7 +308,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="560" y="100" width="160" height="50"/>
+              <AbsoluteConstraints x="560" y="100" width="170" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -323,7 +324,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="560" y="220" width="160" height="50"/>
+              <AbsoluteConstraints x="560" y="220" width="170" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -339,7 +340,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="560" y="160" width="160" height="50"/>
+              <AbsoluteConstraints x="560" y="160" width="170" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -359,16 +360,16 @@
         <Component class="javax.swing.JButton" name="jBbuscarClientes">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/recursos/pesquisa2.png"/>
+              <Image iconType="3" name="/recursos/pesquisa4.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Buscar Clientes"/>
+            <Property name="text" type="java.lang.String" value="Selecionar Cliente"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBbuscarClientesActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="560" y="280" width="160" height="50"/>
+              <AbsoluteConstraints x="560" y="280" width="170" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -441,7 +442,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="50" y="350" width="680" height="230"/>
+              <AbsoluteConstraints x="50" y="350" width="680" height="240"/>
             </Constraint>
           </Constraints>
 

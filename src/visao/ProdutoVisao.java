@@ -55,25 +55,26 @@ public class ProdutoVisao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Produtos");
+        setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Produto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 12))); // NOI18N
         jPanel1.setLayout(null);
 
         jLnome.setText("*Nome: ");
         jPanel1.add(jLnome);
-        jLnome.setBounds(100, 70, 40, 30);
+        jLnome.setBounds(90, 70, 70, 30);
 
         jLmodelo.setText("Modelo: ");
         jPanel1.add(jLmodelo);
-        jLmodelo.setBounds(100, 110, 41, 30);
+        jLmodelo.setBounds(90, 110, 60, 30);
 
         jLmarca.setText("Marca: ");
         jPanel1.add(jLmarca);
-        jLmarca.setBounds(100, 150, 78, 30);
+        jLmarca.setBounds(98, 150, 80, 30);
 
         jLconfiguracao.setText("Configuração:");
         jPanel1.add(jLconfiguracao);
-        jLconfiguracao.setBounds(70, 190, 68, 30);
+        jLconfiguracao.setBounds(70, 190, 80, 30);
 
         jTmodelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +116,7 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jBalterar);
-        jBalterar.setBounds(370, 310, 160, 50);
+        jBalterar.setBounds(370, 310, 170, 50);
 
         jBsalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/floppy-save-icon-23.png"))); // NOI18N
         jBsalvar.setText("Salvar");
@@ -125,9 +126,9 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jBsalvar);
-        jBsalvar.setBounds(30, 310, 160, 50);
+        jBsalvar.setBounds(10, 310, 170, 50);
 
-        jBbuscarProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupaPreta2.png"))); // NOI18N
+        jBbuscarProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/produto pesquisa.png"))); // NOI18N
         jBbuscarProdutos.setText("Buscar Produtos");
         jBbuscarProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +136,7 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jBbuscarProdutos);
-        jBbuscarProdutos.setBounds(540, 70, 161, 50);
+        jBbuscarProdutos.setBounds(540, 70, 170, 50);
 
         jBexcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Delete-icon-2.png"))); // NOI18N
         jBexcluir.setText("Excluir");
@@ -145,7 +146,7 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jBexcluir);
-        jBexcluir.setBounds(540, 310, 160, 50);
+        jBexcluir.setBounds(550, 310, 170, 50);
 
         jBnovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/mais.png"))); // NOI18N
         jBnovo.setText("Novo");
@@ -155,11 +156,11 @@ public class ProdutoVisao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jBnovo);
-        jBnovo.setBounds(200, 310, 160, 50);
+        jBnovo.setBounds(190, 310, 170, 50);
 
         jLvalor.setText("Valor: ");
         jPanel1.add(jLvalor);
-        jLvalor.setBounds(360, 190, 40, 30);
+        jLvalor.setBounds(360, 190, 60, 30);
 
         jLquantidade.setText("Quantidade:");
         jPanel1.add(jLquantidade);
@@ -181,15 +182,15 @@ public class ProdutoVisao extends javax.swing.JFrame {
         jPanel1.add(jTvalor);
         jTvalor.setBounds(400, 190, 100, 30);
 
-        jBbuscarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/pesquisa2.png"))); // NOI18N
-        jBbuscarClientes.setText("Buscar Clientes");
+        jBbuscarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/pesquisa4.png"))); // NOI18N
+        jBbuscarClientes.setText("Selecionar Cliente");
         jBbuscarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBbuscarClientesActionPerformed(evt);
             }
         });
         jPanel1.add(jBbuscarClientes);
-        jBbuscarClientes.setBounds(540, 160, 160, 50);
+        jBbuscarClientes.setBounds(540, 150, 170, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,6 +210,7 @@ public class ProdutoVisao extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTmodeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTmodeloActionPerformed

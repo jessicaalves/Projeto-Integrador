@@ -47,7 +47,6 @@ public class Dispositivo {
         this.voltagem = voltagem;
     }
 
-   
 
     public String getAcessorio() {
         return acessorio;

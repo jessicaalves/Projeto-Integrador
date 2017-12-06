@@ -80,6 +80,7 @@ public class ServicoD {
                     throw new SQLException();
                 }
 
+                ProdutoD produtoDao = new ProdutoD();
                 for (Produto p : servico.getProdutosIncluidos()) {
                     pst = conectadb.conn.prepareStatement("INSERT INTO `servicos_has_produtos`( `idProduto`, `idServico`, `quantidade`, `valor`) "
                             + "VALUES (?,?,?,?)");
@@ -90,6 +91,7 @@ public class ServicoD {
                     pst.setDouble(4, p.getValor());
 
                     pst.execute();
+                    produtoDao.diminuirEstoque(p);
 
                 }
             }
@@ -106,7 +108,7 @@ public class ServicoD {
         } finally {
 
             try {
-                conectadb.conn.setAutoCommit(false);
+                conectadb.conn.setAutoCommit(true);
             } catch (SQLException ex) {
                 System.out.println("Erro: " + ex);
 
@@ -130,8 +132,7 @@ public class ServicoD {
             s.setDispositivo(new Dispositivo());
             conectadb.rs.first();
 
-            System.out.println(conectadb.rs.getInt("idServico"));
-
+           
             s.setId(conectadb.rs.getInt("idServico"));
             s.getCliente().setNome(conectadb.rs.getString("nome"));
             s.getCliente().setId(conectadb.rs.getInt("idCliente"));

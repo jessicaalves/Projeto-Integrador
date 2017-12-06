@@ -1,4 +1,5 @@
 package visao;
+
 import dao.ConecaoBanco;
 import dao.ServicoD;
 import java.sql.SQLException;
@@ -8,42 +9,46 @@ import javax.swing.ListSelectionModel;
 import modelo.ModeloTabela;
 import modelo.ReceptorServico;
 
-
 public class ListarServicos extends javax.swing.JFrame {
+
     public static int idServico;
-    
-ReceptorServico rs;
-    
+
+    ReceptorServico rs;
 
     public ListarServicos(ReceptorServico receptor) {
-        rs=receptor;
+        rs = receptor;
         initComponents();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        preencheTabelaServico("");
-        
+        preencheTabelaServico("", false);
+
     }
-    
-   
-    
-    
-    public ArrayList preencheTabelaServico(String buscarNome) {
+
+    public ArrayList preencheTabelaServico(String buscarNome, boolean incluirFinalizados) {
         ArrayList dados = new ArrayList();
         String[] colunas = new String[]{"ID", "Nome", "Descrição", "Status", "Solução", "Valor"};
         ConecaoBanco conectadb = new ConecaoBanco();
         conectadb.conexao();
 
-        conectadb.executaSql("SELECT * FROM `servico` "
-                + "INNER JOIN cliente ON servico.Cliente_idCliente = cliente.idCliente "
-                + "WHERE cliente.nome LIKE '%" + buscarNome + "%'");
+        String sql;
+        if (incluirFinalizados) {
+            sql = "SELECT * FROM `servico` "
+                    + "INNER JOIN cliente ON servico.Cliente_idCliente = cliente.idCliente "
+                    + "WHERE cliente.nome LIKE '%" + buscarNome + "%'";
+        } else {
+            sql = "SELECT * FROM `servico` "
+                    + "INNER JOIN cliente ON servico.Cliente_idCliente = cliente.idCliente "
+                    + "WHERE cliente.nome LIKE '%" + buscarNome + "%' AND status != 'finalizado'";
+        }
 
-        
+        conectadb.executaSql(sql);
+
         try {
 
             conectadb.rs.first();
             do {
-                dados.add(new Object[]{conectadb.rs.getString("idServico"),conectadb.rs.getString("nome"), 
+                dados.add(new Object[]{conectadb.rs.getString("idServico"), conectadb.rs.getString("nome"),
                     conectadb.rs.getString("descricao"), conectadb.rs.getString("status"),
-                conectadb.rs.getString("solucao"), conectadb.rs.getString("valor")});
+                    conectadb.rs.getString("solucao"), conectadb.rs.getString("valor")});
 
             } while (conectadb.rs.next());
 
@@ -51,7 +56,6 @@ ReceptorServico rs;
 
             tabela.removeAll();
 
-            
         }
         ModeloTabela modelo = new ModeloTabela(dados, colunas);
         tabela.setModel(modelo);
@@ -83,8 +87,10 @@ ReceptorServico rs;
         jTbSelecionarServico = new javax.swing.JToggleButton();
         jTBuscarProdutos = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jCheckBoxFinalizados = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -106,6 +112,11 @@ ReceptorServico rs;
             }
         });
 
+        jTBuscarProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTBuscarProdutosActionPerformed(evt);
+            }
+        });
         jTBuscarProdutos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTBuscarProdutosKeyPressed(evt);
@@ -113,6 +124,13 @@ ReceptorServico rs;
         });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa.png"))); // NOI18N
+
+        jCheckBoxFinalizados.setText("Mostrar finalizados");
+        jCheckBoxFinalizados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxFinalizadosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,7 +145,9 @@ ReceptorServico rs;
                 .addComponent(jTBuscarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(435, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(jCheckBoxFinalizados, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(219, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -138,9 +158,11 @@ ReceptorServico rs;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jTBuscarProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jTBuscarProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                    .addComponent(jCheckBoxFinalizados))
                 .addGap(185, 185, 185)
                 .addComponent(jTbSelecionarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
@@ -152,26 +174,38 @@ ReceptorServico rs;
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTbSelecionarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTbSelecionarServicoActionPerformed
 
         idServico = Integer.parseInt("" + tabela.getValueAt(tabela.getSelectedRow(), 0));
-      
+
         rs.setServico(new ServicoD().buscaServico(idServico));
-        
-        
+
         this.dispose();
     }//GEN-LAST:event_jTbSelecionarServicoActionPerformed
 
     private void jTBuscarProdutosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscarProdutosKeyPressed
-      preencheTabelaServico(jTBuscarProdutos.getText());
+
+        boolean buscaFinalizado = jCheckBoxFinalizados.isSelected();
+
+        preencheTabelaServico(jTBuscarProdutos.getText(), buscaFinalizado);
     }//GEN-LAST:event_jTBuscarProdutosKeyPressed
+
+    private void jTBuscarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTBuscarProdutosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTBuscarProdutosActionPerformed
+
+    private void jCheckBoxFinalizadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFinalizadosActionPerformed
+        preencheTabelaServico(jTBuscarProdutos.getText(), jCheckBoxFinalizados.isSelected());
+    }//GEN-LAST:event_jCheckBoxFinalizadosActionPerformed
 
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox jCheckBoxFinalizados;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTBuscarProdutos;
