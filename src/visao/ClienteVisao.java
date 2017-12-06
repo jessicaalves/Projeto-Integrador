@@ -49,10 +49,8 @@ public class ClienteVisao extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jBsalvar = new javax.swing.JButton();
         jBnovo = new javax.swing.JButton();
-        jBalterar = new javax.swing.JButton();
         jBexcluir = new javax.swing.JButton();
         jTID = new javax.swing.JTextField();
-        jBbuscarClientes = new javax.swing.JButton();
         jT5 = new javax.swing.JFormattedTextField();
         jT6 = new javax.swing.JFormattedTextField();
         jT4 = new javax.swing.JFormattedTextField();
@@ -61,7 +59,7 @@ public class ClienteVisao extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         jtexPesquisar = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jBbuscarClientes = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -175,7 +173,7 @@ public class ClienteVisao extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jBsalvar);
-        jBsalvar.setBounds(560, 40, 170, 50);
+        jBsalvar.setBounds(560, 50, 170, 50);
 
         jBnovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/icone_usuario_novo.png"))); // NOI18N
         jBnovo.setText("Novo");
@@ -185,17 +183,7 @@ public class ClienteVisao extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jBnovo);
-        jBnovo.setBounds(560, 100, 170, 50);
-
-        jBalterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/alterar.png"))); // NOI18N
-        jBalterar.setText("Alterar");
-        jBalterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBalterarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jBalterar);
-        jBalterar.setBounds(560, 220, 170, 50);
+        jBnovo.setBounds(560, 140, 170, 50);
 
         jBexcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ca.png"))); // NOI18N
         jBexcluir.setText("Excluir");
@@ -205,7 +193,7 @@ public class ClienteVisao extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jBexcluir);
-        jBexcluir.setBounds(560, 160, 170, 50);
+        jBexcluir.setBounds(560, 230, 170, 50);
 
         jTID.setEditable(false);
         jTID.addActionListener(new java.awt.event.ActionListener() {
@@ -215,16 +203,6 @@ public class ClienteVisao extends javax.swing.JFrame {
         });
         jPanel2.add(jTID);
         jTID.setBounds(160, 130, 90, 30);
-
-        jBbuscarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/pesquisa4.png"))); // NOI18N
-        jBbuscarClientes.setText("Selecionar Cliente");
-        jBbuscarClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBbuscarClientesActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jBbuscarClientes);
-        jBbuscarClientes.setBounds(560, 280, 170, 50);
 
         try {
             jT5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#########")));
@@ -299,7 +277,13 @@ public class ClienteVisao extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/lupa.png"))); // NOI18N
+        jBbuscarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/pesquisa4.png"))); // NOI18N
+        jBbuscarClientes.setText("Buscar Cliente");
+        jBbuscarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBbuscarClientesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -311,17 +295,17 @@ public class ClienteVisao extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jtexPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jBbuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtexPesquisar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtexPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBbuscarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -369,8 +353,9 @@ public class ClienteVisao extends javax.swing.JFrame {
             jT6.setText("");
             jT8.setText("");
             jT9.setText("");
+             jTNome_Resposnsavel.setText("");
             tabela.repaint();
-        //preencheTabelaCliente("");
+        preencheTabelaCliente("Select * from cliente where nome like'%" + jtexPesquisar.getText() + "%'ORDER BY nome");
         }
         
         
@@ -387,6 +372,7 @@ public class ClienteVisao extends javax.swing.JFrame {
         jT6.setText("");
         jT8.setText("");
         jT9.setText("");
+        jTNome_Resposnsavel.setText("");
 
     }//GEN-LAST:event_jBnovoActionPerformed
 
@@ -397,7 +383,7 @@ public class ClienteVisao extends javax.swing.JFrame {
         cli.setTelefone(jT5.getText());
         cli.setEndereco(jT7.getText());
         cli.setCpf(jT4.getText());
-        cli.setNome_responsavel(jTnome.getText());
+        cli.setNome_responsavel(jTNome_Resposnsavel.getText());
         cli.setTelefone2(jT6.getText());
         cli.setCidade(jT8.getText());
         cli.setCep(jT9.getText());
@@ -405,9 +391,11 @@ public class ClienteVisao extends javax.swing.JFrame {
 
         if (jTID.getText().equals("")) {
             clid.salvar(cli);
+            preencheTabelaCliente("Select * from cliente where nome like'%" + jtexPesquisar.getText() + "%'ORDER BY nome");
         } else {            
             cli.setId(Integer.parseInt(jTID.getText()));            
             clid.alterar(cli);
+            preencheTabelaCliente("Select * from cliente where nome like'%" + jtexPesquisar.getText() + "%'ORDER BY nome");
         }
         cli = null;
         
@@ -463,7 +451,7 @@ public class ClienteVisao extends javax.swing.JFrame {
             conbanco.rs.first();
             jTID.setText(String.valueOf(conbanco.rs.getInt("idCliente")));
             jTnome.setText(conbanco.rs.getString("nome"));
-            jTnome.setText(conbanco.rs.getString("responsavel"));
+            jTNome_Resposnsavel.setText(conbanco.rs.getString("responsavel"));
             jT4.setText(conbanco.rs.getString("cpf"));
             jT5.setText(conbanco.rs.getString("telefone"));
             jT6.setText(conbanco.rs.getString("telefone2"));
@@ -479,23 +467,6 @@ public class ClienteVisao extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_tabelaMouseClicked
-
-    private void jBalterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBalterarActionPerformed
-        cli.setId(Integer.parseInt(jTID.getText()));
-        cli.setNome(jTnome.getText());
-        cli.setTelefone(jT5.getText());
-        cli.setEndereco(jT7.getText());
-        cli.setCpf(jT4.getText());
-        cli.setNome_responsavel(jTnome.getText());
-        cli.setTelefone2(jT6.getText());
-        cli.setCidade(jT8.getText());
-        cli.setCep(jT9.getText());
-        cli.setEstado((String) jComboBox1.getSelectedItem());
-
-        clid.alterar(cli);
-
-
-    }//GEN-LAST:event_jBalterarActionPerformed
 
     private void jT5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jT5ActionPerformed
         // TODO add your handling code here:
@@ -585,13 +556,11 @@ public class ClienteVisao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBalterar;
     private javax.swing.JButton jBbuscarClientes;
     private javax.swing.JButton jBexcluir;
     private javax.swing.JButton jBnovo;
     private javax.swing.JButton jBsalvar;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLcep;
     private javax.swing.JLabel jLcidade;

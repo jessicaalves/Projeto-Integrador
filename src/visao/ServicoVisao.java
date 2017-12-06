@@ -215,6 +215,11 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
                 jTvalorActionPerformed(evt);
             }
         });
+        jTvalor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTvalorKeyReleased(evt);
+            }
+        });
         jPanel1.add(jTvalor);
         jTvalor.setBounds(320, 100, 140, 30);
 
@@ -354,9 +359,9 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
         ));
         jScrollPane2.setViewportView(tabela);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 640, 160));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 630, 160));
 
-        jBexcluirProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Delete.png"))); // NOI18N
+        jBexcluirProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/x2.png"))); // NOI18N
         jBexcluirProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBexcluirProdActionPerformed(evt);
@@ -364,7 +369,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
         });
         jPanel2.add(jBexcluirProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 50, 40));
 
-        jBadicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/novoProduto_1.png"))); // NOI18N
+        jBadicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/mais5.png"))); // NOI18N
         jBadicionarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBadicionarProdutoActionPerformed(evt);
@@ -395,7 +400,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             }
         });
         jPanel1.add(jBbuscarServicos);
-        jBbuscarServicos.setBounds(520, 260, 170, 50);
+        jBbuscarServicos.setBounds(520, 200, 170, 50);
 
         jBbuscarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/pesquisa4.png"))); // NOI18N
         jBbuscarClientes.setText("Selecionar Cliente");
@@ -405,7 +410,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
             }
         });
         jPanel1.add(jBbuscarClientes);
-        jBbuscarClientes.setBounds(520, 320, 170, 50);
+        jBbuscarClientes.setBounds(520, 260, 170, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -443,7 +448,18 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
     }//GEN-LAST:event_jBbuscarServicosActionPerformed
 
     private void jBnovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnovoActionPerformed
-        // TODO add your handling code here:
+        jTcliente.setText("");
+        jTdescricao.setText("");
+        jTvalor.setText("");
+        jComboBoxTipo.setSelectedItem(null);
+        jRadio110.setSelected(false);
+        jRadio220.setSelected(false);
+        jRadioBivolt.setSelected(false);
+        jTAcessorios.setText("");
+        jTsolucao.setText("");
+        jComboBoxStatus.setSelectedItem(null);
+        jTmarca.setText("");
+        jTnumeroSerie1.setText("");
     }//GEN-LAST:event_jBnovoActionPerformed
 
     private void jBexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBexcluirActionPerformed
@@ -540,6 +556,15 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
         
         
     }//GEN-LAST:event_jBexcluirProdActionPerformed
+
+    private void jTvalorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTvalorKeyReleased
+ String x = jTvalor.getText();
+
+        x = x.replace(',', '.');
+        x = x.replace("..", ".");
+        
+        jTvalor.setText(x);
+    }//GEN-LAST:event_jTvalorKeyReleased
 
     /**
      * @param args the command line arguments

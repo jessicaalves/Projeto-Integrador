@@ -107,6 +107,7 @@
         <Component class="javax.swing.JTextField" name="jTvalor">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTvalorActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTvalorKeyReleased"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -377,7 +378,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="30" width="640" height="160"/>
+                  <AbsoluteConstraints x="20" y="30" width="630" height="160"/>
                 </Constraint>
               </Constraints>
 
@@ -398,7 +399,7 @@
             <Component class="javax.swing.JButton" name="jBexcluirProd">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/Delete.png"/>
+                  <Image iconType="3" name="/recursos/x2.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -413,7 +414,7 @@
             <Component class="javax.swing.JButton" name="jBadicionarProduto">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/recursos/novoProduto_1.png"/>
+                  <Image iconType="3" name="/recursos/mais5.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -473,7 +474,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="520" y="260" width="170" height="50"/>
+              <AbsoluteConstraints x="520" y="200" width="170" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -489,7 +490,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="520" y="320" width="170" height="50"/>
+              <AbsoluteConstraints x="520" y="260" width="170" height="50"/>
             </Constraint>
           </Constraints>
         </Component>

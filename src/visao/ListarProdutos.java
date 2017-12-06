@@ -31,6 +31,21 @@ public class ListarProdutos extends javax.swing.JFrame {
         preencheTabelaCliente("");
         rp = receptorProduto;
     }
+    
+    
+    public ListarProdutos(ReceptorProduto receptorProduto, boolean mostrarBoxQuantidade){
+        initComponents();
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        preencheTabelaCliente("");
+        rp = receptorProduto;    
+        
+       
+            jTquantidade.setVisible(mostrarBoxQuantidade);
+            jLabel2.setVisible(mostrarBoxQuantidade);
+       
+                
+        
+    }
 
     public ArrayList preencheTabelaCliente(String buscarNome) {
         ArrayList dados = new ArrayList();
@@ -223,7 +238,7 @@ public class ListarProdutos extends javax.swing.JFrame {
           
      rp.setProduto(p);
      
-      //this.dispose();
+      this.dispose();
     }//GEN-LAST:event_jTbSelecionarProdutoActionPerformed
 
     private void jTquantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTquantidadeActionPerformed

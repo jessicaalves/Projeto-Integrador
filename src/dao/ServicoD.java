@@ -161,12 +161,13 @@ public class ServicoD {
 
                     Produto p = new Produto();
 
-                    p.setId(conectadb.rs.getInt("id"));
+                    p.setId(conectadb.rs.getInt("idProduto"));
                     p.setMarca(conectadb.rs.getString("marca"));
                     p.setModelo(conectadb.rs.getString("modelo"));
                     p.setNome(conectadb.rs.getString("nome"));
                     p.setQuantidade(conectadb.rs.getInt("quantidade"));
                     p.setValor(conectadb.rs.getDouble("valor"));
+                    p.setConfiguracao(conectadb.rs.getString("configuracao"));
 
                     s.getProdutosIncluidos().add(p);
 

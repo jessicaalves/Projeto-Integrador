@@ -25,25 +25,29 @@ public class ProdutoC {
          p.setQuantidade(Integer.parseInt(produto.get(3)));
          p.setConfiguracao(produto.get(4));
          p.setValor(Double.parseDouble(produto.get(5)));
+        
          
          
          new ProdutoD().cadastrar(p);
 
-       
-     System.out.println(produto.get(0));
-        
-        for (String string : produto) {
-       System.out.println(string);
-      }
-         
-         
-         
-        
+               
     }
     public void excluir (){
         
     }
-    public void alterar (){
+    public void alterar (ArrayList<String> produto){
+        
+        Produto p = new Produto();
+         p.setNome(produto.get(0));
+         p.setModelo(produto.get(1));
+         p.setMarca(produto.get(2));
+         p.setQuantidade(Integer.parseInt(produto.get(3)));
+         p.setConfiguracao(produto.get(4));
+         p.setValor(Double.parseDouble(produto.get(5)));
+         p.setId(Integer.parseInt(produto.get(6)));
+         
+         
+         new ProdutoD().alterar(p);
         
     }
     public void salvar(){
