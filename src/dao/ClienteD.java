@@ -35,7 +35,7 @@ public class ClienteD {
             pst.setString(9, cliente.getEstado());
 
             pst.execute();
-            JOptionPane.showMessageDialog(null, "Dados inseridos com sucessos!");
+            JOptionPane.showMessageDialog(null, "Cliente salvo com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " ERROR! Favor preencher todos os dados!" + ex);
         }
@@ -98,7 +98,7 @@ public class ClienteD {
             conectadb.rs.first();
             codCliente = conectadb.rs.getInt("idCliente");
         } catch (SQLException ex) {
-            JOptionPane.showInternalMessageDialog(null, "erro ao busacar o codigo" + ex);
+            JOptionPane.showMessageDialog(null, "erro ao busacar o codigo" + ex);
         }
         conectadb.desconecta();
 

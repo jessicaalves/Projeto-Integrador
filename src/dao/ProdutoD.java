@@ -27,7 +27,7 @@ public class ProdutoD {
             pst.setDouble(6, produto.getValor());
 
             pst.execute();
-            JOptionPane.showMessageDialog(null, " Salvo com sucesso!");
+            JOptionPane.showMessageDialog(null, "Produto salvo com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " ERROR! Favor preencher todos os dados!" + ex);
         }

@@ -10,6 +10,7 @@ import dao.ConecaoBanco;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import modelo.Cliente;
 import modelo.ModeloTabela;
@@ -47,7 +48,7 @@ public class ListarClientes extends javax.swing.JFrame {
 
         conectadb.executaSql("select * from cliente where nome like'%" + buscarNome + "%'");
 
-        // String sql="Select * from cliente where telefone like'%" + PesquisaSQL + "%' ORDER ";
+       
         try {
 
             conectadb.rs.first();
@@ -57,11 +58,12 @@ public class ListarClientes extends javax.swing.JFrame {
             } while (conectadb.rs.next());
 
         } catch (SQLException ex) {
-
-            tabela.removeAll();
-
-            //JOptionPane.showMessageDialog(null, "Erro ao carregar os dados" + ex);
+            
+           JOptionPane.showMessageDialog(null, "Não existem dados cadastrados! " );
+           
+           tabela.removeAll();
         }
+        
         ModeloTabela modelo = new ModeloTabela(dados, colunas);
         tabela.setModel(modelo);
         tabela.getColumnModel().getColumn(0).setPreferredWidth(50);

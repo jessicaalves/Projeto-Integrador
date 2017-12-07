@@ -66,6 +66,7 @@ public class ProdutoVisao extends javax.swing.JFrame implements ReceptorProduto 
         jTvalor = new javax.swing.JTextField();
         jLid = new javax.swing.JLabel();
         jTid = new javax.swing.JTextField();
+        jBsair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Produtos");
@@ -150,7 +151,7 @@ public class ProdutoVisao extends javax.swing.JFrame implements ReceptorProduto 
             }
         });
         jPanel1.add(jBexcluir);
-        jBexcluir.setBounds(430, 310, 170, 50);
+        jBexcluir.setBounds(470, 310, 170, 50);
 
         jBnovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/mais.png"))); // NOI18N
         jBnovo.setText("Novo");
@@ -160,7 +161,7 @@ public class ProdutoVisao extends javax.swing.JFrame implements ReceptorProduto 
             }
         });
         jPanel1.add(jBnovo);
-        jBnovo.setBounds(250, 310, 170, 50);
+        jBnovo.setBounds(270, 310, 170, 50);
 
         jLvalor.setText("Valor: ");
         jPanel1.add(jLvalor);
@@ -193,6 +194,16 @@ public class ProdutoVisao extends javax.swing.JFrame implements ReceptorProduto 
         jTid.setEditable(false);
         jPanel1.add(jTid);
         jTid.setBounds(400, 110, 100, 30);
+
+        jBsair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sair1.png"))); // NOI18N
+        jBsair.setText("Sair");
+        jBsair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsairActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBsair);
+        jBsair.setBounds(540, 140, 170, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -308,6 +319,10 @@ public class ProdutoVisao extends javax.swing.JFrame implements ReceptorProduto 
         jTvalor.setText(x);
     }//GEN-LAST:event_jTvalorKeyReleased
 
+    private void jBsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsairActionPerformed
+         System.exit(0);
+    }//GEN-LAST:event_jBsairActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -347,6 +362,7 @@ public class ProdutoVisao extends javax.swing.JFrame implements ReceptorProduto 
     private javax.swing.JButton jBbuscarProdutos;
     private javax.swing.JButton jBexcluir;
     private javax.swing.JButton jBnovo;
+    private javax.swing.JButton jBsair;
     private javax.swing.JButton jBsalvar;
     private javax.swing.JLabel jLconfiguracao;
     private javax.swing.JLabel jLid;

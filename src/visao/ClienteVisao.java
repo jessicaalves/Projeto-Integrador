@@ -60,6 +60,7 @@ public class ClienteVisao extends javax.swing.JFrame {
         tabela = new javax.swing.JTable();
         jtexPesquisar = new javax.swing.JTextField();
         jBbuscarClientes = new javax.swing.JButton();
+        jBsair = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -142,11 +143,11 @@ public class ClienteVisao extends javax.swing.JFrame {
 
         jLestado.setText("Estado:");
         jPanel2.add(jLestado);
-        jLestado.setBounds(410, 250, 60, 30);
+        jLestado.setBounds(400, 250, 70, 30);
 
         jLcep.setText("CEP:");
         jPanel2.add(jLcep);
-        jLcep.setBounds(280, 250, 40, 30);
+        jLcep.setBounds(270, 250, 40, 30);
 
         jT8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +164,7 @@ public class ClienteVisao extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(460, 250, 50, 30);
+        jComboBox1.setBounds(450, 250, 60, 30);
 
         jBsalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/floppy-save-icon-23.png"))); // NOI18N
         jBsalvar.setText("Salvar");
@@ -183,7 +184,7 @@ public class ClienteVisao extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jBnovo);
-        jBnovo.setBounds(560, 140, 170, 50);
+        jBnovo.setBounds(560, 110, 170, 50);
 
         jBexcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ca.png"))); // NOI18N
         jBexcluir.setText("Excluir");
@@ -193,7 +194,7 @@ public class ClienteVisao extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jBexcluir);
-        jBexcluir.setBounds(560, 230, 170, 50);
+        jBexcluir.setBounds(560, 180, 170, 50);
 
         jTID.setEditable(false);
         jTID.addActionListener(new java.awt.event.ActionListener() {
@@ -248,8 +249,13 @@ public class ClienteVisao extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jT9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jT9ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jT9);
-        jT9.setBounds(310, 250, 90, 30);
+        jT9.setBounds(300, 250, 90, 30);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Clientes Cadastrados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 12))); // NOI18N
 
@@ -314,6 +320,16 @@ public class ClienteVisao extends javax.swing.JFrame {
         jPanel2.add(jPanel1);
         jPanel1.setBounds(50, 350, 680, 240);
 
+        jBsair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/sair1.png"))); // NOI18N
+        jBsair.setText("Sair");
+        jBsair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsairActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jBsair);
+        jBsair.setBounds(560, 250, 170, 50);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -373,7 +389,8 @@ public class ClienteVisao extends javax.swing.JFrame {
         jT8.setText("");
         jT9.setText("");
         jTNome_Resposnsavel.setText("");
-
+        
+        
     }//GEN-LAST:event_jBnovoActionPerformed
 
     private void jBsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalvarActionPerformed
@@ -487,6 +504,14 @@ public class ClienteVisao extends javax.swing.JFrame {
     private void jTnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTnomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTnomeActionPerformed
+
+    private void jT9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jT9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jT9ActionPerformed
+
+    private void jBsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsairActionPerformed
+         System.exit(0);
+    }//GEN-LAST:event_jBsairActionPerformed
     public ArrayList preencheTabelaCliente(String SQL) {
         ArrayList dados = new ArrayList();
         String[] colunas = new String[]{"Nome", "cpf", "telefone", "cidade"};
@@ -494,7 +519,7 @@ public class ClienteVisao extends javax.swing.JFrame {
         conectadb.conexao();
         conectadb.executaSql(SQL);
 
-        // String sql="Select * from cliente where telefone like'%" + PesquisaSQL + "%' ORDER ";
+       
         try {
 
             conectadb.rs.first();
@@ -504,9 +529,10 @@ public class ClienteVisao extends javax.swing.JFrame {
             } while (conectadb.rs.next());
 
         } catch (SQLException ex) {
-            JOptionPane.showInternalMessageDialog(null, "Erro ao carregar os dados" + ex);
+            JOptionPane.showMessageDialog(null, "Não existem dados cadastrados! " );
 
         }
+        
         ModeloTabela modelo = new ModeloTabela(dados, colunas);
         tabela.setModel(modelo);
         tabela.getColumnModel().getColumn(0).setPreferredWidth(200);
@@ -559,6 +585,7 @@ public class ClienteVisao extends javax.swing.JFrame {
     private javax.swing.JButton jBbuscarClientes;
     private javax.swing.JButton jBexcluir;
     private javax.swing.JButton jBnovo;
+    private javax.swing.JButton jBsair;
     private javax.swing.JButton jBsalvar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel7;

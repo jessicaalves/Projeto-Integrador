@@ -5,6 +5,7 @@ import dao.ServicoD;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import modelo.ModeloTabela;
 import modelo.ReceptorServico;
@@ -53,8 +54,10 @@ public class ListarServicos extends javax.swing.JFrame {
             } while (conectadb.rs.next());
 
         } catch (SQLException ex) {
+            
+         JOptionPane.showMessageDialog(null, "Não existem dados cadastrados! " );
 
-            tabela.removeAll();
+           tabela.removeAll();
 
         }
         ModeloTabela modelo = new ModeloTabela(dados, colunas);
