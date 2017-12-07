@@ -132,7 +132,6 @@ public class ServicoD {
             s.setDispositivo(new Dispositivo());
             conectadb.rs.first();
 
-           
             s.setId(conectadb.rs.getInt("idServico"));
             s.getCliente().setNome(conectadb.rs.getString("nome"));
             s.getCliente().setId(conectadb.rs.getInt("idCliente"));
@@ -186,11 +185,78 @@ public class ServicoD {
 
     }
 
-    public void excluir() {
+    public void excluir(int idServico) {
+
+        conectadb.conexao();
+        try {
+            //Desabilitar o auto commit para fazer transação
+            conectadb.conn.setAutoCommit(false);
+
+            //deleta os serviços
+            PreparedStatement pst = conectadb.conn.prepareStatement("delete from servico where idServico=?");
+            pst.setInt(1, idServico);
+            pst.execute();
+
+            //deleta os produtos incluídos em serviços
+            pst = conectadb.conn.prepareStatement("delete from servicos_has_produtos where idServico=?");
+            pst.setInt(1, idServico);
+            pst.execute();
+
+            //deleta os dispositivos incluídos em serviços
+            pst = conectadb.conn.prepareStatement("delete from dispositivo_has_servico where Servico_idServico =?");
+            pst.setInt(1, idServico);
+            pst.execute();
+
+            conectadb.conn.commit();
+            JOptionPane.showMessageDialog(null, "dados excluidos com sucesso");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error ao excluir dados" + ex);
+        }
+
+        conectadb.desconecta();
 
     }
 
-    public void alterar() {
+    public void alterar(Servico s) {
+
+        conectadb.conexao();
+        try {
+            conectadb.conn.setAutoCommit(false);
+
+            PreparedStatement pst = conectadb.conn.prepareStatement("update servico set Cliente_idCliente=?,descricao=?"
+                    + ",valor=?,solucao=?,status=? where idServico=?");
+
+            pst.setInt(1, s.getCliente().getId());
+            pst.setString(2, s.getDescricao());
+            pst.setDouble(3, s.getValor());
+            pst.setString(4, s.getSolucao());
+            pst.setString(5, s.getStatus());
+            pst.setInt(6, s.getId());
+
+            System.out.println("Cliente id: "+
+                    s.getCliente().getId() + "\n Descrição: "
+                    + s.getDescricao() + "\n Valor: "
+                    + s.getValor() + "\n Solução: "
+                    + s.getSolucao() + "\n Status: "
+                    + s.getStatus() + "\n idServiço: "
+                    + s.getId()
+            );
+            
+            
+            
+            
+            
+          
+            pst.execute();
+
+            conectadb.conn.commit();
+            JOptionPane.showMessageDialog(null, "Alterado com sucesso");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR!! " + ex);
+        }
+        conectadb.desconecta();
+
     }
 
     public void salvar() {

@@ -6,7 +6,7 @@
 package visao;
 
 import controle.ServicoC;
-import dao.ProdutoD;
+import dao.ServicoD;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -30,7 +30,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
 
     @Override
     public void setServico(Servico ser) { //Recebe um objeto do tipo serviço e os mostra. 
-        
+
         /*
         Ao clicar no botão buscar serviço é solicitada a janela de listar serviços,
         onde estarão constados todos os serviços cadastrados, as classes que desejem utilizar o serviço
@@ -40,35 +40,32 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
         Não se pode utilizar a lista de cadastros mais de uma vez porque a lista não saberá para qual classe enviar o id.
         A classe listar cliente só poderá ser instanciada se a classe que a chamar implementar o metódo da interface receptor.
         Ela só vai ser instanciada se ela receber no contrutor quem é o receptor. 
-        */
-       
-        jTid.setText("" + ser.getId()); 
-        jTcliente.setText(ser.getCliente().getNome());       
-        jTsolucao.setText(ser.getSolucao()); 
-        jTvalor.setText("" + ser.getValor()); 
+         */
+        jTid.setText("" + ser.getId());
+        jTcliente.setText(ser.getCliente().getNome());
+        jTsolucao.setText(ser.getSolucao());
+        jTvalor.setText("" + ser.getValor());
         jTdescricao.setText(ser.getDescricao());
         jTAcessorios.setText(ser.getDispositivo().getAcessorio());
         jTmarca.setText(ser.getDispositivo().getMarca());
         jTnumeroSerie1.setText(ser.getDispositivo().getNumeroSerie());
         jComboBoxStatus.setSelectedItem(ser.getStatus());
         jComboBoxTipo.setSelectedItem(ser.getDispositivo().getTipo());
-       
-      
         
-        if(ser.getDispositivo().getVoltagem().equals("220V")){            
+        cliente=ser.getCliente();
+
+        if (ser.getDispositivo().getVoltagem().equals("220V")) {
             jRadio220.setSelected(true);
-        }else if(ser.getDispositivo().getVoltagem().equals("110V")){
+        } else if (ser.getDispositivo().getVoltagem().equals("110V")) {
             jRadio110.setSelected(true);
-        }else{
+        } else {
             jRadioBivolt.setSelected(true);
         }
-        
-        
-        
-       produtosIncuidos= ser.getProdutosIncluidos();
-        
+
+        produtosIncuidos = ser.getProdutosIncluidos();
+
         carregaTabelaProdutosIncusos();
-        
+
     }
 
     @Override
@@ -119,6 +116,32 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
 
         dados = null;
     }
+    
+       private void limparCampos() {
+
+        cliente.setId(0);
+
+        jTcliente.setText("");
+        jTdescricao.setText("");
+        jTvalor.setText("");
+        jComboBoxTipo.setSelectedItem("Desktop");
+        bGVoltagem.clearSelection();
+        jTAcessorios.setText("");
+        jTsolucao.setText("");
+        jComboBoxStatus.setSelectedItem("Em manutenção");
+        jTmarca.setText("");
+        jTnumeroSerie1.setText("");
+        jTid.setText("");
+
+        if (produtosIncuidos != null) {
+            produtosIncuidos.clear();
+            carregaTabelaProdutosIncusos();
+        }
+
+        
+
+    }
+    
 
     /**
      * Creates new form ServicoVisao
@@ -448,27 +471,30 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
     }//GEN-LAST:event_jBbuscarServicosActionPerformed
 
     private void jBnovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnovoActionPerformed
-        jTcliente.setText("");
-        jTdescricao.setText("");
-        jTvalor.setText("");
-        jComboBoxTipo.setSelectedItem(null);
-        jRadio110.setSelected(false);
-        jRadio220.setSelected(false);
-        jRadioBivolt.setSelected(false);
-        jTAcessorios.setText("");
-        jTsolucao.setText("");
-        jComboBoxStatus.setSelectedItem(null);
-        jTmarca.setText("");
-        jTnumeroSerie1.setText("");
+
+        limparCampos();
+
     }//GEN-LAST:event_jBnovoActionPerformed
 
     private void jBexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBexcluirActionPerformed
-        // TODO add your handling code here:
+        //Chamar método no dao para excluir Serviço
+
+        int resposta;
+        resposta = JOptionPane.showConfirmDialog(this, "Você deseja realmente excluir?");
+
+        if (resposta == JOptionPane.YES_OPTION) {
+
+            int idServico = Integer.parseInt(jTid.getText());
+
+            new ServicoD().excluir(idServico);
+            limparCampos();
+        }
+
 
     }//GEN-LAST:event_jBexcluirActionPerformed
 
     private void jBsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalvarActionPerformed
-  //método que verifica se foi selecionado um cliente, e dps zera o cliente selecionado ao salvar, porque ao criar um novo cliente o id é diferente.
+        //método que verifica se foi selecionado um cliente, e dps zera o cliente selecionado ao salvar, porque ao criar um novo cliente o id é diferente.
 
         if (cliente.getId() != 0) {//Condição para certificar se o cliente foi selecionado, 
             if (bGVoltagem.getSelection() != null) { //Condição para certificar de que o usuário irá selecionar pelo menos um tipo de voltagem, impede que ele mantenha este campo vazio.
@@ -485,10 +511,19 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
                 servico.add(jTnumeroSerie1.getText());//8 // Adição dos campos digitados pelo usuário através do formulário no arrayList.
                 servico.add(jTmarca.getText());//9 // Adição dos campos digitados pelo usuário através do formulário no arrayList.
 
+                servico.add(jTid.getText());//10 idServiço
                 // ServicoC sc = new ServicoC();
                 //  sc.cadastrar(servico);
-                new ServicoC().cadastrar(servico, produtosIncuidos); // Criação do objeto anônimo da classe ServicoC, envio do arrayList serviço para classe ServicoC através do metódo cadastrar de controle que espera receber um arrayList do tipo serviço.
-                cliente.setId(0);  // zera o id cliente após salvar o serviço
+                if (jTid.getText().equals("")) {
+                    new ServicoC().cadastrar(servico, produtosIncuidos); // Criação do objeto anônimo da classe ServicoC, envio do arrayList serviço para classe ServicoC através do metódo cadastrar de controle que espera receber um arrayList do tipo serviço.
+                    cliente.setId(0);  // zera o id cliente após salvar o serviço
+
+                } else {
+                    new ServicoC().alterar(servico, produtosIncuidos);
+
+                }
+
+                limparCampos();
             } else {
                 //Se o usuário não selecionou o campo de voltagem, este receberá a msg abaixo e deverá selecionar a voltagem para finalizar o cadastro do serviço.
                 JOptionPane.showMessageDialog(this, "É necessário selecionar a voltagem!");
@@ -540,29 +575,29 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
     }//GEN-LAST:event_jComboBoxTipoActionPerformed
 
     private void jBexcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBexcluirProdActionPerformed
-      
-        if (tabela.getRowCount()>0){
-            if(tabela.getSelectedRow()!=-1){
-                
+
+        if (tabela.getRowCount() > 0) {
+            if (tabela.getSelectedRow() != -1) {
+
                 int indexTabela = tabela.getSelectedRow();
-                
-                produtosIncuidos.remove(indexTabela);           
-                
+
+                produtosIncuidos.remove(indexTabela);
+
                 carregaTabelaProdutosIncusos();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Nenhum item selecionado");
             }
         }
-        
-        
+
+
     }//GEN-LAST:event_jBexcluirProdActionPerformed
 
     private void jTvalorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTvalorKeyReleased
- String x = jTvalor.getText();
+        String x = jTvalor.getText();
 
         x = x.replace(',', '.');
         x = x.replace("..", ".");
-        
+
         jTvalor.setText(x);
     }//GEN-LAST:event_jTvalorKeyReleased
 
@@ -639,5 +674,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
     private javax.swing.JTextField jTvalor;
     private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
+
+ 
 
 }
