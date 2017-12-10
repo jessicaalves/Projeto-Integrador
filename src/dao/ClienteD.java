@@ -21,7 +21,9 @@ public class ClienteD {
     int codCliente;
 
     public void salvar(Cliente cliente) {
+        
         conectadb.conexao();
+       
         try {
             PreparedStatement pst = conectadb.conn.prepareStatement("insert into cliente(nome, telefone, endereco,cpf,responsavel,telefone2,cidade,cep,estado)values ( ?, ?, ?, ?,?,?,?,?,?)");
             pst.setString(1, cliente.getNome());

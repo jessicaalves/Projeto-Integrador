@@ -64,7 +64,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
 
         produtosIncuidos = ser.getProdutosIncluidos();
 
-        carregaTabelaProdutosIncusos();
+        carregaTabelaProdutosInclusos();
 
     }
 
@@ -82,10 +82,10 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
         }
 
         produtosIncuidos.add(p);
-        carregaTabelaProdutosIncusos();
+        carregaTabelaProdutosInclusos();
     }
 
-    private void carregaTabelaProdutosIncusos() {
+    private void carregaTabelaProdutosInclusos() {
 
         String[] colunas = new String[]{"ID", "Nome", "Marca", "Quantidade", "Valor"};
 
@@ -135,7 +135,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
 
         if (produtosIncuidos != null) {
             produtosIncuidos.clear();
-            carregaTabelaProdutosIncusos();
+            carregaTabelaProdutosInclusos();
         }
 
         
@@ -285,6 +285,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
         jPanel1.add(jLsolucao);
         jLsolucao.setBounds(80, 250, 60, 30);
 
+        jTcliente.setEditable(false);
         jTcliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTclienteActionPerformed(evt);
@@ -318,7 +319,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
         jPanel1.add(jLtipo);
         jLtipo.setBounds(90, 170, 50, 30);
 
-        jLvoltagem2.setText("Voltagem:");
+        jLvoltagem2.setText("*Voltagem:");
         jPanel1.add(jLvoltagem2);
         jLvoltagem2.setBounds(240, 170, 70, 30);
 
@@ -593,7 +594,7 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
 
                 produtosIncuidos.remove(indexTabela);
 
-                carregaTabelaProdutosIncusos();
+                carregaTabelaProdutosInclusos();
             } else {
                 JOptionPane.showMessageDialog(this, "Nenhum item selecionado");
             }
@@ -612,7 +613,9 @@ public class ServicoVisao extends javax.swing.JFrame implements ReceptorCliente,
     }//GEN-LAST:event_jTvalorKeyReleased
 
     private void jBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsActionPerformed
-        System.exit(0);
+       //System.exit(0);
+       this.dispose();
+       new Login().setVisible(true);
     }//GEN-LAST:event_jBsActionPerformed
 
     /**

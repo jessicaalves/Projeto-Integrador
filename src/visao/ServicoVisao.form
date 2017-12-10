@@ -185,6 +185,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="jTcliente">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTclienteActionPerformed"/>
           </Events>
@@ -250,7 +253,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLvoltagem2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Voltagem:"/>
+            <Property name="text" type="java.lang.String" value="*Voltagem:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

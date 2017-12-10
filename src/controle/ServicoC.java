@@ -25,7 +25,7 @@ public class ServicoC {
         // Pegando os itens do array list e transformando em objeto
         Cliente cli = new Cliente();
         // É necessário saber de que cliente é determinado serviço, então é criado 
-        // uma instancia de cliente para apontar para o local na memória que está a várialvel do cliente que já existe
+        // uma instancia de cliente para apontar para o local na memória que está a variável do cliente que já existe
         // para então 
         cli.setId(Integer.parseInt(servico.get(0)));
         

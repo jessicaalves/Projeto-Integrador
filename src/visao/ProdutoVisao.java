@@ -58,7 +58,6 @@ public class ProdutoVisao extends javax.swing.JFrame implements ReceptorProduto 
         jTnome = new javax.swing.JTextField();
         jBsalvar = new javax.swing.JButton();
         jBbuscarProdutos = new javax.swing.JButton();
-        jBexcluir = new javax.swing.JButton();
         jBnovo = new javax.swing.JButton();
         jLvalor = new javax.swing.JLabel();
         jLquantidade = new javax.swing.JLabel();
@@ -131,7 +130,7 @@ public class ProdutoVisao extends javax.swing.JFrame implements ReceptorProduto 
             }
         });
         jPanel1.add(jBsalvar);
-        jBsalvar.setBounds(70, 310, 170, 50);
+        jBsalvar.setBounds(10, 320, 170, 50);
 
         jBbuscarProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/novoProduto2.png"))); // NOI18N
         jBbuscarProdutos.setText("Buscar Produtos");
@@ -141,17 +140,7 @@ public class ProdutoVisao extends javax.swing.JFrame implements ReceptorProduto 
             }
         });
         jPanel1.add(jBbuscarProdutos);
-        jBbuscarProdutos.setBounds(540, 70, 170, 50);
-
-        jBexcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Delete-icon-2.png"))); // NOI18N
-        jBexcluir.setText("Excluir");
-        jBexcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBexcluirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jBexcluir);
-        jBexcluir.setBounds(470, 310, 170, 50);
+        jBbuscarProdutos.setBounds(370, 320, 170, 50);
 
         jBnovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/mais.png"))); // NOI18N
         jBnovo.setText("Novo");
@@ -161,7 +150,7 @@ public class ProdutoVisao extends javax.swing.JFrame implements ReceptorProduto 
             }
         });
         jPanel1.add(jBnovo);
-        jBnovo.setBounds(270, 310, 170, 50);
+        jBnovo.setBounds(190, 320, 170, 50);
 
         jLvalor.setText("Valor: ");
         jPanel1.add(jLvalor);
@@ -203,7 +192,7 @@ public class ProdutoVisao extends javax.swing.JFrame implements ReceptorProduto 
             }
         });
         jPanel1.add(jBsair);
-        jBsair.setBounds(540, 140, 170, 50);
+        jBsair.setBounds(550, 320, 170, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -294,10 +283,6 @@ public class ProdutoVisao extends javax.swing.JFrame implements ReceptorProduto 
         new ListarProdutos(this,false).setVisible(true);
     }//GEN-LAST:event_jBbuscarProdutosActionPerformed
 
-    private void jBexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBexcluirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBexcluirActionPerformed
-
     private void jBnovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnovoActionPerformed
 
         limparCampos();
@@ -320,7 +305,8 @@ public class ProdutoVisao extends javax.swing.JFrame implements ReceptorProduto 
     }//GEN-LAST:event_jTvalorKeyReleased
 
     private void jBsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsairActionPerformed
-         System.exit(0);
+        System.exit(0);
+    
     }//GEN-LAST:event_jBsairActionPerformed
 
     /**
@@ -360,7 +346,6 @@ public class ProdutoVisao extends javax.swing.JFrame implements ReceptorProduto 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBbuscarProdutos;
-    private javax.swing.JButton jBexcluir;
     private javax.swing.JButton jBnovo;
     private javax.swing.JButton jBsair;
     private javax.swing.JButton jBsalvar;

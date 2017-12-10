@@ -99,11 +99,11 @@ public class ClienteVisao extends javax.swing.JFrame {
         jPanel2.add(jT7);
         jT7.setBounds(160, 210, 350, 30);
 
-        jLtelefone2.setText("*Telefone 2:");
+        jLtelefone2.setText("Telefone 2:");
         jPanel2.add(jLtelefone2);
         jLtelefone2.setBounds(340, 170, 70, 30);
 
-        jLresponsavel.setText("*Responsável:");
+        jLresponsavel.setText("Responsável:");
         jPanel2.add(jLresponsavel);
         jLresponsavel.setBounds(80, 90, 100, 30);
 
@@ -127,9 +127,9 @@ public class ClienteVisao extends javax.swing.JFrame {
         jPanel2.add(jTNome_Resposnsavel);
         jTNome_Resposnsavel.setBounds(160, 90, 350, 30);
 
-        jLcpf.setText("CPF:");
+        jLcpf.setText("*CPF:");
         jPanel2.add(jLcpf);
-        jLcpf.setBounds(320, 130, 50, 30);
+        jLcpf.setBounds(310, 130, 50, 30);
         jPanel2.add(jLabel7);
         jLabel7.setBounds(220, 200, 0, 0);
 
@@ -394,6 +394,11 @@ public class ClienteVisao extends javax.swing.JFrame {
     }//GEN-LAST:event_jBnovoActionPerformed
 
     private void jBsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalvarActionPerformed
+       if(jTnome.getText().equals("") || jT5.getText().equals("(  )         ")){
+           JOptionPane.showMessageDialog(this, "Digite todos os campos!");
+       
+       }else{
+        
         cli = new Cliente();
         
         cli.setNome(jTnome.getText());
@@ -415,9 +420,9 @@ public class ClienteVisao extends javax.swing.JFrame {
             preencheTabelaCliente("Select * from cliente where nome like'%" + jtexPesquisar.getText() + "%'ORDER BY nome");
         }
         cli = null;
+       }
         
-        //preencheTabelaCliente("");
-
+       
 
     }//GEN-LAST:event_jBsalvarActionPerformed
 

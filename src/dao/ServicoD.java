@@ -208,10 +208,10 @@ public class ServicoD {
             pst.execute();
 
             conectadb.conn.commit();
-            JOptionPane.showMessageDialog(null, "dados excluidos com sucesso");
+            JOptionPane.showMessageDialog(null, "Dados excluidos com sucesso!");
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error ao excluir dados" + ex);
+            JOptionPane.showMessageDialog(null, "Erro ao excluir os dados!" + ex);
         }
 
         conectadb.desconecta();
@@ -233,21 +233,7 @@ public class ServicoD {
             pst.setString(4, s.getSolucao());
             pst.setString(5, s.getStatus());
             pst.setInt(6, s.getId());
-
-            System.out.println("Cliente id: "+
-                    s.getCliente().getId() + "\n Descrição: "
-                    + s.getDescricao() + "\n Valor: "
-                    + s.getValor() + "\n Solução: "
-                    + s.getSolucao() + "\n Status: "
-                    + s.getStatus() + "\n idServiço: "
-                    + s.getId()
-            );
             
-            
-            
-            
-            
-          
             pst.execute();
 
             conectadb.conn.commit();

@@ -32,10 +32,12 @@ public class ProdutoD {
             JOptionPane.showMessageDialog(null, " ERROR! Favor preencher todos os dados!" + ex);
         }
     }
-
-    public void excluir() {
+    
+     public void excluir(int idProduto) {
+       
 
     }
+
 
     public void alterar(Produto p) {
 
@@ -123,4 +125,5 @@ public class ProdutoD {
 
     }
 
+   
 }
